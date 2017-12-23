@@ -3,7 +3,7 @@ class IncomeTax {
     this.days = days
   }
 
-  forValue (value) {
+  ofValue (value) {
     if (this.days <= 180) {
       return this._twentyTwoPercentOfValue(value)
     }
