@@ -3,11 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "dependencies": {
-    "bootstrap": "4.0.0-beta.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
-  },
   "scripts": {
     "build": "rm -rf dist/* && webpack -p",
     "dev": "webpack-dev-server",
@@ -15,7 +10,29 @@
     "test": "jest",
     "jest": "jest"
   },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  },
+  "jest": {
+    "verbose": true,
+    "testMatch": [
+      "**/spec/**/*.js"
+    ],
+    "collectCoverage": true
+  },
+  "dependencies": {
+    "bootstrap": "4.0.0-beta.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.0.4",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^2.30.1",
     "jest": "^22.0.4",
