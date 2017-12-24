@@ -1,8 +1,8 @@
 const taxes = [
-  { days: 721, percent: 15 },
-  { days: 361, percent: 17.5 },
-  { days: 181, percent: 20 },
-  { days: 0, percent: 22.5 },
+  { day: 721, percent: 15 },
+  { day: 361, percent: 17.5 },
+  { day: 181, percent: 20 },
+  { day: 0, percent: 22.5 }
 ]
 
 class IncomeTax {
@@ -11,7 +11,7 @@ class IncomeTax {
   }
 
   ofValue (value) {
-    const tax = taxes.find((tax) => tax.days <= this.days)
+    const tax = taxes.find((tax) => tax.day <= this.days)
     return value * (tax.percent / 100)
   }
 }
