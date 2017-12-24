@@ -6,6 +6,9 @@ env:
     - CC_TEST_REPORTER_ID=9b5fd08db97ae168c5021ef96c2c1e66b0f8772e799f5731a0a657a0fc69ee24
   matrix:
     - NODE_ENV=test
+branches:
+  only:
+    - master
 install:
    - yarn
 before_script:
