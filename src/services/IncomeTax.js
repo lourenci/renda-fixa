@@ -1,36 +1,18 @@
+const taxes = [
+  { days: 721, percent: 15 },
+  { days: 361, percent: 17.5 },
+  { days: 181, percent: 20 },
+  { days: 0, percent: 22.5 },
+]
+
 class IncomeTax {
   constructor (days) {
     this.days = days
   }
 
   ofValue (value) {
-    if (this.days <= 180) {
-      return this._twentyTwoPercentOfValue(value)
-    }
-    if (this.days <= 360) {
-      return this._twentyPercentOfValue(value)
-    }
-    if (this.days <= 720) {
-      return this._seventeenPointFivePercentOfValue(value)
-    }
-
-    return this._fiveteenPercentOfValue(value)
-  }
-
-  _twentyTwoPercentOfValue (value) {
-    return value * 0.225
-  }
-
-  _twentyPercentOfValue (value) {
-    return value * 0.20
-  }
-
-  _seventeenPointFivePercentOfValue (value) {
-    return value * 0.175
-  }
-
-  _fiveteenPercentOfValue (value) {
-    return value * 0.15
+    const tax = taxes.find((tax) => tax.days <= this.days)
+    return value * (tax.percent / 100)
   }
 }
 
