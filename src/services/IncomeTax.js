@@ -10,7 +10,7 @@ class IncomeTax {
     this.days = days
   }
 
-  ofValue (value) {
+  percentOfValue (value) {
     const tax = taxes.find((tax) => tax.day <= this.days)
     return value * (tax.percent / 100)
   }
