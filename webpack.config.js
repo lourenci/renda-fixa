@@ -4,8 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const extractSass = new ExtractTextPlugin({
-  filename: 'app.bundle.[contenthash].css',
-  disable: process.env.NODE_ENV === 'development'
+  filename: 'app.bundle.[contenthash].css'
 })
 
 const config = {
