@@ -1,6 +1,6 @@
 import './index.scss'
 import React from 'react'
-import FixedIncomeFormCard from './components/FixedIncomeFormCard'
+import InvestimentTypesForm from '../../containers/investimentTypesForm'
 
 class App extends React.Component {
   render () {
@@ -8,7 +8,7 @@ class App extends React.Component {
       <div className='container'>
         <div className='row'>
           <div className='col-3'>
-            <FixedIncomeFormCard />
+            <InvestimentTypesForm />
           </div>
         </div>
       </div>
