@@ -28,7 +28,7 @@ class InvestimentTypeSelect extends React.Component {
 
     return (
       <div>
-        <select className='custom-select custom-select-sm' value={this.state.selectedInvestiment.name}
+        <select className='form-control' value={this.state.selectedInvestiment.name}
           onChange={this.handleOnChange.bind(this)}>
           {this.props.investimentTypes.map((type, index) => (<option key={index} value={type.name}>{type.name}</option>))}
         </select>
