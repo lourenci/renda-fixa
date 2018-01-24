@@ -17,7 +17,7 @@ class InvestimentTypeSelect extends React.Component {
       if (this.state.selectedInvestiment.index) {
         return (
           <div className='input-group input-group-sm mt-2'>
-            <input type='number' className='form-control' placeholder='Rentabilidade' min='0' />
+            <input type='number' name='profitability' className='form-control' placeholder='Rentabilidade' min='0' required />
             <div className='input-group-append'>
               <span className='input-group-text'>% da {this.state.selectedInvestiment.index}</span>
             </div>
@@ -28,7 +28,7 @@ class InvestimentTypeSelect extends React.Component {
 
     return (
       <div>
-        <select className='form-control' value={this.state.selectedInvestiment.name}
+        <select name='type' className='form-control' value={this.state.selectedInvestiment.name}
           onChange={this.handleOnChange.bind(this)}>
           {this.props.investimentTypes.map((type, index) => (<option key={index} value={type.name}>{type.name}</option>))}
         </select>

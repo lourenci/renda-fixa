@@ -1,6 +1,6 @@
 import './index.scss'
 import React from 'react'
-import InvestimentTypesForm from '../../containers/investimentTypesForm'
+import InvestimentForm from './components/InvestimentForm'
 
 class App extends React.Component {
   render () {
@@ -8,7 +8,7 @@ class App extends React.Component {
       <div className='container'>
         <div className='row'>
           <div className='col-3'>
-            <InvestimentTypesForm />
+            <InvestimentForm />
           </div>
         </div>
       </div>
