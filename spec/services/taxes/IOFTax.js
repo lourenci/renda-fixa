@@ -3,7 +3,7 @@ import IOFTax from '../../../src/services/taxes/IOFTax'
 describe('IOFTax', () => {
   describe('#percent', () => {
     describe('when the days of the investiment is less than 30 days', () => {
-      it('returns the correspondent percentage to the days', () => {
+      it('returns the correspondent percentage of the days', () => {
         expect(new IOFTax(29).percent()).toBe(3)
       })
     })
@@ -18,7 +18,7 @@ describe('IOFTax', () => {
 
   describe('#percentOfValue', () => {
     describe('when the days of the investiment is less than 30 days', () => {
-      it('returns the correspondent percentage of the value to the days', () => {
+      it('returns the value deducted by correspondent percentage of the days', () => {
         expect(new IOFTax(28).percentOfValue(100)).toBe(6)
       })
     })
