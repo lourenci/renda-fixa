@@ -32,6 +32,11 @@ const config = {
       { test: /\.(woff|woff2|eot|ttf)$/, loader: 'file-loader' },
       { test: /\.svg$/, loader: 'file-loader' }
     ]
+  },
+  resolve: {
+    alias: {
+      Services: path.resolve(__dirname, 'src/services/')
+    }
   }
 }
 
