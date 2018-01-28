@@ -1,16 +1,12 @@
 import './index.scss'
 import React from 'react'
-import InvestimentForm from './components/InvestimentForm'
+import InvestimentGrid from './components/InvestimentList'
 
 class App extends React.Component {
   render () {
     return (
-      <div className='container'>
-        <div className='row'>
-          <div className='col-3'>
-            <InvestimentForm />
-          </div>
-        </div>
+      <div className='container h-100'>
+        <InvestimentGrid />
       </div>
     )
   }

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import InvestimentFormCard from './InvestimentFormCard'
+import InvestimentFormCard from './InvestimentResultCard/index'
 
 const mapStateToProps = state => {
   return {

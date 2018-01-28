@@ -1,0 +1,11 @@
+:local(.for_new) {
+  height: 275px;
+  width: 235px;
+  border: 1px dashed grey;
+  opacity: 0.5;
+
+  :local(.plus_icon) {
+    color: #563d7c;
+    cursor: pointer;
+  }
+}
