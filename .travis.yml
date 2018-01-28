@@ -20,11 +20,12 @@ script:
   - yarn run test
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+before_deploy:
+  - yarn run build
 deploy:
     provider: pages
     skip-cleanup: true
     github-token: $GITHUB_TOKEN
-    script: yarn run build
     local-dir: dist/
     on:
       branch: master
