@@ -17,7 +17,7 @@ class InvestimentList extends React.Component {
   render () {
     const pendingInvestiments = () => (
       Array.from({ length: this.state.pendingInvestiments }, (_, j) => (
-        <div className='m-3' key={j} >
+        <div className='m-3' key={j}>
           <InvestimentForm />
         </div>
       ))
@@ -25,7 +25,7 @@ class InvestimentList extends React.Component {
 
     const toOpenANewInvestiment = () => (
       <div className={`${style.for_new} d-flex justify-content-center align-items-center m-3`}>
-        <i className={`fa fa-plus-circle fa-4x ${style.plus_icon}`} onClick={this.openANewInvestiment.bind(this)}/>
+        <i className={`fa fa-plus-circle fa-4x ${style.plus_icon}`} onClick={this.openANewInvestiment.bind(this)} />
       </div>
     )
 
