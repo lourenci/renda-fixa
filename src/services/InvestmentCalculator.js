@@ -21,6 +21,9 @@ class InvestmentCalculator {
     return Number((grossProfit - netAmount).toFixed(2))
   }
 
+  netAmount (taxesToDeduct) {
+    return this.grossAmount() - this.amountTaxes(taxesToDeduct)
+  }
 }
 
 export default InvestmentCalculator
