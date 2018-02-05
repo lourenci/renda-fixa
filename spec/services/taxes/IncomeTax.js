@@ -1,4 +1,4 @@
-import IncomeTax from '../../../src/services/taxes/IncomeTax'
+import IncomeTax from 'Services/taxes/IncomeTax'
 
 describe('IncomeTax', () => {
   describe('#percent', () => {

@@ -23,7 +23,10 @@
     "testMatch": [
       "**/spec/**/*.js"
     ],
-    "collectCoverage": true
+    "collectCoverage": true,
+    "moduleNameMapper": {
+      "^Services(.*)$": "<rootDir>/src/services$1"
+    }
   },
   "dependencies": {
     "bootstrap": "^4.0.0",
