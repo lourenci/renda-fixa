@@ -1,28 +1,37 @@
-import { annualRateToDaily, futureValue } from 'Services/financialMath'
+import { annualRateToDaily, dailyRateToAnnual, futureValue, periodRateToAnnualDaily, rate } from 'Services/financialMath'
 import IncomeTax from './taxes/IncomeTax'
 import IOFTax from './taxes/IOFTax'
 
 const taxClasses = { IncomeTax, IOFTax }
 
 class InvestmentCalculator {
-  constructor (amount, days, annualRate) {
+  constructor (amount, days, annualRate, taxesToDeduct) {
     this.amount = amount
     this.days = days
     this.annualRate = annualRate
+    this.taxesToDeduct = taxesToDeduct
   }
 
   grossAmount () {
     return futureValue(this.amount, this.days, annualRateToDaily(this.annualRate))
   }
 
-  amountTaxes (taxesToDeduct) {
+  amountTaxes () {
     const grossProfit = this.grossAmount() - this.amount
-    const netAmount = taxesToDeduct.reduce((sum, tax) => sum - new taxClasses[tax](this.days).percentOfValue(sum), grossProfit)
+    const netAmount = this.taxesToDeduct.reduce((sum, tax) => {
+      return sum - new taxClasses[tax](this.days).percentOfValue(sum)
+    }, grossProfit)
     return Number((grossProfit - netAmount).toFixed(2))
   }
 
-  netAmount (taxesToDeduct) {
-    return this.grossAmount() - this.amountTaxes(taxesToDeduct)
+  netAmount () {
+    return this.grossAmount() - this.amountTaxes()
+  }
+
+  netPercentYear () {
+    const periodRate = rate(this.amount, this.netAmount(), this.days)
+    const dailyRate = periodRateToAnnualDaily(this.days, periodRate)
+    return dailyRateToAnnual(dailyRate)
   }
 }
 
