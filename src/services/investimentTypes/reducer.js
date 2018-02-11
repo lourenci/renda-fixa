@@ -1,29 +1,5 @@
-const InvestimentTypes = [
-  {
-    'name': 'Tesouro Direto Selic',
-    'index': null,
-    'taxes': [
-      {'name': 'IncomeTax', 'description': 'Imposto de Renda'},
-      {'name': 'FinancialOperationTax', 'description': 'IOF'}
-    ]
-  },
-  {
-    'name': 'LCI',
-    'index': 'CDI'
-  },
-  {
-    'name': 'LCA',
-    'index': 'CDI'
-  },
-  {
-    'name': 'CDB',
-    'index': 'CDI',
-    'taxes': [
-      {'name': 'IncomeTax', 'description': 'Imposto de Renda'}
-    ]
-  }
-]
+import { INVESTMENT_TYPES } from 'Services/investimentTypes/index'
 
-const investimentTypes = (state = InvestimentTypes) => state
+const investimentTypes = (state = INVESTMENT_TYPES) => state
 
 export default investimentTypes

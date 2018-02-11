@@ -8,7 +8,11 @@ class FixedIncomeFormCard extends React.Component {
   handleSubmit (event) {
     event.preventDefault()
 
-    const investiment = FormDataParse(new FormData(event.target)).toJSON()
+    const investiment = Object.assign({},
+      { id: this.props.investment.id },
+      FormDataParse(new FormData(event.target)).toJSON()
+    )
+
     this.props.onCalculate(investiment)
   }
 
