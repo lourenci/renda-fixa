@@ -1,4 +1,4 @@
-import { annualRateToDaily, dailyRateToAnnual, futureValue, periodRateToDaily, rate } from 'Services/financialMath'
+import { annualRateToDaily, dailyRateToAnnual, futureValue, periodRateToAnnualDaily, rate } from 'Services/financialMath'
 
 describe('financialMath', () => {
   describe('#annualRateToDaily', () => {
@@ -13,9 +13,9 @@ describe('financialMath', () => {
     })
   })
 
-  describe('#periodRateToDaily', () => {
-    it('returns the n-days rate converted to daily rate', () => {
-      expect(periodRateToDaily(7, 0.012)).toEqual(0.001705)
+  describe('#periodRateToAnnualDaily', () => {
+    it('returns the period rate converted to annual rate', () => {
+      expect(periodRateToAnnualDaily(52, 0.09)).toEqual(0.815961)
     })
   })
 

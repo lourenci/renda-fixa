@@ -28,7 +28,7 @@ describe('InvestmentCalculator', () => {
 
   describe('#netPercentYear', () => {
     it('returns the net percentage per year', () => {
-      expect(subject.netPercentYear()).toEqual(0.001441)
+      expect(subject.netPercentYear()).toEqual(0.869173)
     })
   })
 })

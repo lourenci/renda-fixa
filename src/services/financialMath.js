@@ -13,8 +13,8 @@ export const dailyRateToAnnual = dailyRate => {
   return truncNumber(Math.pow(1 + dailyRate, 360) - 1, DECIMAL_PLACES)
 }
 
-export const periodRateToDaily = (period, rate) => {
-  return truncNumber(Math.pow(1 + rate, 1 / period) - 1, DECIMAL_PLACES)
+export const periodRateToAnnualDaily = (period, rate) => {
+  return truncNumber(Math.pow(1 + rate, 360 / period) - 1, DECIMAL_PLACES)
 }
 
 export const rate = (presentValue, futureValue, period) => {
