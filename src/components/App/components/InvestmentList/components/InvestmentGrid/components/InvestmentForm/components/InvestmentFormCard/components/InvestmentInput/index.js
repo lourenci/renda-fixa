@@ -1,6 +1,6 @@
 import React from 'react'
 
-class InvestimentInput extends React.Component {
+class InvestmentInput extends React.Component {
   render () {
     return (
       <div>
@@ -18,4 +18,4 @@ class InvestimentInput extends React.Component {
   }
 }
 
-export default InvestimentInput
+export default InvestmentInput

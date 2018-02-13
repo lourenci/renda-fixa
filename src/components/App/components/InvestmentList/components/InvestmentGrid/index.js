@@ -1,7 +1,8 @@
 import style from './index.scss'
 import React from 'react'
-import InvestimentForm from './components/InvestimentForm/index'
-import InvestmentResult from './components/InvestimentResult'
+import InvestmentForm from './components/InvestmentForm/index'
+import InvestmentResult from './components/InvestmentResult/index'
+import PropTypes from 'prop-types'
 
 class InvestmentGrid extends React.Component {
   onNewInvestment () {
@@ -13,7 +14,7 @@ class InvestmentGrid extends React.Component {
       return this.props.investments.map(investment => {
         return (
           <div className='m-3' key={investment.id}>
-            {investment.status === 'in_simulation' ? <InvestimentForm investment={investment} />
+            {investment.status === 'in_simulation' ? <InvestmentForm investment={investment} />
               : <InvestmentResult {...investment} />}
           </div>
         )
@@ -35,13 +36,9 @@ class InvestmentGrid extends React.Component {
   }
 }
 
-// InvestmentGrid.propTypes = {
-//   investiments: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       name: PropTypes.string,
-//       simulated: PropTypes.bool
-//     })
-//   )
-// }
+InvestmentGrid.propTypes = {
+  investments: PropTypes.array.isRequired,
+  onNewInvestment: PropTypes.func.isRequired
+}
 
 export default InvestmentGrid

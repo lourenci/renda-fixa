@@ -1,5 +1,5 @@
 import InvestmentCalculator from 'Services/InvestmentCalculator'
-import { INVESTMENT_TYPES } from 'Services/investimentTypes'
+import { INVESTMENT_TYPES } from 'Services/investmentTypes'
 
 const investmentType = name => INVESTMENT_TYPES.filter(investment => investment.name === name)[0]
 

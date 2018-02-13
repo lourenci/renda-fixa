@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
-import InvestimentFormCard from './components/InvestimentFormCard/index'
+import InvestmentFormCard from './components/InvestmentFormCard/index'
 import { calculateInvestment } from '../../../../actions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    investimentTypes: state.investimentTypes,
+    investmentTypes: state.investmentTypes,
     investment: ownProps.investment
   }
 }
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(InvestimentFormCard)
+export default connect(mapStateToProps, mapDispatchToProps)(InvestmentFormCard)

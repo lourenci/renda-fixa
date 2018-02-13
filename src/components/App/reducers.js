@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-import investimentTypes from 'Services/investimentTypes/reducer'
+import investmentTypes from 'Services/investmentTypes/reducer'
 import investments from './components/InvestmentList/reducer'
 
 const fixedIncomeApp = combineReducers({
-  investimentTypes,
+  investmentTypes: investmentTypes,
   investments
 })
 
