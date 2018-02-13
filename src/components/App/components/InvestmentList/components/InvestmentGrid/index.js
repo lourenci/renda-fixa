@@ -1,7 +1,7 @@
 import style from './index.scss'
 import React from 'react'
-import InvestimentForm from './components/InvestimentForm/index'
-import InvestmentResult from './components/InvestimentResult'
+import InvestmentForm from './components/InvestmentForm/index'
+import InvestmentResult from './components/InvestmentResult/index'
 
 class InvestmentGrid extends React.Component {
   onNewInvestment () {
@@ -13,7 +13,7 @@ class InvestmentGrid extends React.Component {
       return this.props.investments.map(investment => {
         return (
           <div className='m-3' key={investment.id}>
-            {investment.status === 'in_simulation' ? <InvestimentForm investment={investment} />
+            {investment.status === 'in_simulation' ? <InvestmentForm investment={investment} />
               : <InvestmentResult {...investment} />}
           </div>
         )
