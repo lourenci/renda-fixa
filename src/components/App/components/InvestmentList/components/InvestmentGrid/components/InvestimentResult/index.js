@@ -1,61 +1,50 @@
 import style from './index.scss'
+import InformationTable from './components/InformationTable/index'
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const brazilianMoney = number => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number)
 
 class InvestmentResult extends React.Component {
   render () {
-    console.log(this.props.investment)
     return (
       <div className={`card rounded ${style.card_property}`}>
-        <div className='card-header font-weight-bold'>{this.props.investment.name}</div>
+        <div className='card-header font-weight-bold'>{this.props.name}</div>
         <ul className='list-group list-group-flush'>
           <li className='list-group-item'>
-            <table className={`${style.table} w-100`}>
-              <tbody>
-                <tr>
-                  <td>Investimento</td>
-                  <td className='text-right'>{brazilianMoney(this.props.investment.investedMoney)}</td>
-                </tr>
-                <tr>
-                  <td>Dias</td>
-                  <td className='text-right'>{this.props.investment.days}</td>
-                </tr>
-              </tbody>
-            </table>
+            <InformationTable lines={[
+              { title: 'Investimento', value: brazilianMoney(this.props.investedMoney) },
+              { title: 'Dias', value: `${this.props.days}` }
+            ]} />
           </li>
           <li className='list-group-item'>
-            <table className={`${style.table} w-100`}>
-              <tbody>
-                <tr>
-                  <td>Total bruto</td>
-                  <td className='text-right'>{brazilianMoney(this.props.investment.grossAmount)}</td>
-                </tr>
-                <tr>
-                  <td>Impostos</td>
-                  <td className='text-right'>{`- ${brazilianMoney(this.props.investment.amountTaxes)}`}</td>
-                </tr>
-              </tbody>
-            </table>
+            <InformationTable lines={[
+              { title: 'Total bruto', value: brazilianMoney(this.props.result.grossAmount) },
+              { title: 'Impostos', value: `- ${brazilianMoney(this.props.result.amountTaxes)}` }
+            ]} />
           </li>
           <li className='list-group-item'>
-            <table className={`${style.table} w-100`}>
-              <tbody>
-                <tr>
-                  <td>Total líquido</td>
-                  <td className='text-right'>{brazilianMoney(this.props.investment.netAmount)}</td>
-                </tr>
-                <tr>
-                  <td>% líquida ao ano</td>
-                  <td className='text-right'>{this.props.investment.netPercentYear * 100}%</td>
-                </tr>
-              </tbody>
-            </table>
+            <InformationTable lines={[
+              { title: 'Total líquido', value: brazilianMoney(this.props.result.netAmount) },
+              { title: '% líquida ao ano', value: `${(this.props.result.netPercentYear * 100).toFixed(2)}%` }
+            ]} />
           </li>
         </ul>
       </div>
     )
   }
+}
+
+InvestmentResult.propTypes = {
+  name: PropTypes.string.isRequired,
+  investedMoney: PropTypes.number.isRequired,
+  days: PropTypes.number.isRequired,
+  result: PropTypes.shape({
+    grossAmount: PropTypes.number.isRequired,
+    amountTaxes: PropTypes.number.isRequired,
+    netAmount: PropTypes.number.isRequired,
+    netPercentYear: PropTypes.number.isRequired
+  }).isRequired
 }
 
 export default InvestmentResult

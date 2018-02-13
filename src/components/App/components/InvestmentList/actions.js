@@ -17,7 +17,10 @@ export const addInvestment = () => {
 }
 
 export const calculateInvestment = investment => {
-  const investmentCalculator = new InvestmentCalculator(investment.value, investment.days,
+  const value = Number(investment.value)
+  const days = Number(investment.days)
+
+  const investmentCalculator = new InvestmentCalculator(value, days,
     0.07, investmentType(investment.type).taxes.map(tax => tax.name))
 
   return {
@@ -25,11 +28,13 @@ export const calculateInvestment = investment => {
     id: investment.id,
     status: 'calculated',
     name: investment.type,
-    investedMoney: investment.value,
-    days: investment.days,
-    grossAmount: investmentCalculator.grossAmount(),
-    amountTaxes: investmentCalculator.amountTaxes(),
-    netAmount: investmentCalculator.netAmount(),
-    netPercentYear: investmentCalculator.netPercentYear()
+    investedMoney: value,
+    days: days,
+    result: {
+      grossAmount: investmentCalculator.grossAmount(),
+      amountTaxes: investmentCalculator.amountTaxes(),
+      netAmount: investmentCalculator.netAmount(),
+      netPercentYear: investmentCalculator.netPercentYear()
+    }
   }
 }

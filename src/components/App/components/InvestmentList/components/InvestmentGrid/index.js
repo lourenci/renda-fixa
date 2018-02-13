@@ -14,7 +14,7 @@ class InvestmentGrid extends React.Component {
         return (
           <div className='m-3' key={investment.id}>
             {investment.status === 'in_simulation' ? <InvestimentForm investment={investment} />
-              : <InvestmentResult investment={investment} />}
+              : <InvestmentResult {...investment} />}
           </div>
         )
       })
