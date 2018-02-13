@@ -2,6 +2,7 @@ import style from './index.scss'
 import React from 'react'
 import InvestmentForm from './components/InvestmentForm/index'
 import InvestmentResult from './components/InvestmentResult/index'
+import PropTypes from 'prop-types'
 
 class InvestmentGrid extends React.Component {
   onNewInvestment () {
@@ -35,13 +36,9 @@ class InvestmentGrid extends React.Component {
   }
 }
 
-// InvestmentGrid.propTypes = {
-//   investiments: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       name: PropTypes.string,
-//       simulated: PropTypes.bool
-//     })
-//   )
-// }
+InvestmentGrid.propTypes = {
+  investments: PropTypes.array.isRequired,
+  onNewInvestment: PropTypes.func.isRequired
+}
 
 export default InvestmentGrid
