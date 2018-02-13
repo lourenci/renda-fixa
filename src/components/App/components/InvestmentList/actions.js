@@ -19,9 +19,10 @@ export const addInvestment = () => {
 export const calculateInvestment = investment => {
   const value = Number(investment.value)
   const days = Number(investment.days)
+  const rate = Number((0.07 * (investment.profitability / 100 || 1)).toFixed(5))
 
   const investmentCalculator = new InvestmentCalculator(value, days,
-    0.07, investmentType(investment.type).taxes.map(tax => tax.name))
+    rate, investmentType(investment.type).taxes.map(tax => tax.name))
 
   return {
     type: CALCULATED_INVESTMENT,
