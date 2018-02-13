@@ -1,7 +1,7 @@
 const DECIMAL_PLACES = 6
 
 const truncNumber = (number, decimalPlaces) => {
-  const regex = new RegExp(`[0-9]*\.[0-9]{${decimalPlaces}}`)
+  const regex = new RegExp(`[0-9]*\\.[0-9]{${decimalPlaces}}`)
   return number.toString().match(regex) && Number(number.toString().match(regex)[0])
 }
 

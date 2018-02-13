@@ -1,4 +1,4 @@
-const FormDataParse = (FormData) => {
+const FormDataParse = FormData => {
   return {
     toJSON: () => {
       let json = {}
