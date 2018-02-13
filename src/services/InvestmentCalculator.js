@@ -1,4 +1,4 @@
-import { annualRateToDaily, dailyRateToAnnual, futureValue, periodRateToAnnualDaily, rate } from 'Services/financialMath'
+import { annualRateToDaily, dailyRateToAnnual, futureValue, rate } from 'Services/financialMath'
 import IncomeTax from './taxes/IncomeTax'
 import IOFTax from './taxes/IOFTax'
 
@@ -29,8 +29,7 @@ class InvestmentCalculator {
   }
 
   netPercentYear () {
-    const periodRate = rate(this.amount, this.netAmount(), this.days)
-    const dailyRate = periodRateToAnnualDaily(this.days, periodRate)
+    const dailyRate = rate(this.amount, this.netAmount(), this.days)
     return dailyRateToAnnual(dailyRate)
   }
 }
