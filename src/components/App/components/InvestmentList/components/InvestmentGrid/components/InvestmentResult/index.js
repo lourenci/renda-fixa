@@ -9,21 +9,21 @@ class InvestmentResult extends React.Component {
   render () {
     return (
       <div className={`card rounded ${style.card_property}`}>
-        <div className='card-header font-weight-bold'>{this.props.name}</div>
+        <div className='card-header font-weight-bold p-2'>{this.props.name}</div>
         <ul className='list-group list-group-flush'>
-          <li className='list-group-item'>
+          <li className='list-group-item p-2'>
             <InformationTable lines={[
               { title: 'Investimento', value: brazilianMoney(this.props.investedMoney) },
               { title: 'Dias', value: `${this.props.days}` }
             ]} />
           </li>
-          <li className='list-group-item'>
+          <li className='list-group-item p-2'>
             <InformationTable lines={[
               { title: 'Total bruto', value: brazilianMoney(this.props.result.grossAmount) },
               { title: 'Impostos', value: `- ${brazilianMoney(this.props.result.amountTaxes)}` }
             ]} />
           </li>
-          <li className='list-group-item'>
+          <li className='list-group-item p-2'>
             <InformationTable lines={[
               { title: 'Total líquido', value: brazilianMoney(this.props.result.netAmount) },
               { title: '% líquida ao ano', value: `${(this.props.result.netPercentYear * 100).toFixed(2)}%` }
