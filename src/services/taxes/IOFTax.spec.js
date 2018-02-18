@@ -1,4 +1,4 @@
-import IOFTax from '../../../src/services/taxes/IOFTax'
+import IOFTax from './IOFTax'
 
 describe('IOFTax', () => {
   describe('#percent', () => {

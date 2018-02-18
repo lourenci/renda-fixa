@@ -1,4 +1,4 @@
-import FormDataParse from '../../src/services/FormDataParse'
+import FormDataParse from './FormDataParse'
 
 describe('FormDataParse', () => {
   const formElement = () => {

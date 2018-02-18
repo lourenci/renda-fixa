@@ -1,9 +1,17 @@
-import { annualRateToDaily, dailyRateToAnnual, futureValue, rate } from 'Services/financialMath'
+import { annualRateToDaily, dailyRateToAnnual, futureValue, rate } from './financialMath'
 
 describe('financialMath', () => {
   describe('#annualRateToDaily', () => {
-    it('returns the annual rate converted to daily rate', () => {
-      expect(annualRateToDaily(0.07)).toEqual(0.000187)
+    describe('when decimal places is specified', () => {
+      it('returns the annual rate converted to daily rate with the decimal places specified', () => {
+        expect(annualRateToDaily(0.07, 10)).toEqual(0.0001879583)
+      })
+    })
+
+    describe('when decimal places isn\'t specified', () => {
+      it('returns the annual rate converted to daily rate', () => {
+        expect(annualRateToDaily(0.07)).toEqual(0.000187)
+      })
     })
   })
 
