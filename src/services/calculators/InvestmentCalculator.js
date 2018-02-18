@@ -1,6 +1,6 @@
 import { annualRateToDaily, dailyRateToAnnual, futureValue, rate } from 'Services/financialMath'
-import IncomeTax from './taxes/IncomeTax'
-import IOFTax from './taxes/IOFTax'
+import IncomeTax from '../taxes/IncomeTax'
+import IOFTax from '../taxes/IOFTax'
 
 const taxClasses = { IncomeTax, IOFTax }
 

@@ -1,7 +1,12 @@
-import InvestmentCalculator from 'Services/InvestmentCalculator'
+import InvestmentCalculator from 'Services/calculators/InvestmentCalculator'
+import TesouroDiretoCalculator from 'Services/calculators/TesouroDiretoCalculator'
 import { INVESTMENT_TYPES } from 'Services/investmentTypes'
 
 const investmentType = name => INVESTMENT_TYPES.filter(investment => investment.name === name)[0]
+const investmentCalculator = calculator =>
+  (value, days, rate, taxes) =>
+    (calculator === 'TesouroDiretoCalculator' ? new TesouroDiretoCalculator(value, days, rate, taxes)
+      : new InvestmentCalculator(value, days, rate, taxes))
 
 export const ADD_INVESTMENT = 'ADD_INVESTMENT'
 export const CALCULATED_INVESTMENT = 'CALCULATED_INVESTMENT'
@@ -21,7 +26,7 @@ export const calculateInvestment = investment => {
   const days = Number(investment.days)
   const rate = Number((0.07 * (investment.profitability / 100 || 1)).toFixed(5))
 
-  const investmentCalculator = new InvestmentCalculator(value, days,
+  const calculator = investmentCalculator(investmentType(investment.type).calculator)(value, days,
     rate, investmentType(investment.type).taxes.map(tax => tax.name))
 
   return {
@@ -32,10 +37,10 @@ export const calculateInvestment = investment => {
     investedMoney: value,
     days: days,
     result: {
-      grossAmount: investmentCalculator.grossAmount(),
-      amountTaxes: investmentCalculator.amountTaxes(),
-      netAmount: investmentCalculator.netAmount(),
-      netPercentYear: investmentCalculator.netPercentYear()
+      grossAmount: calculator.grossAmount(),
+      amountTaxes: calculator.amountTaxes(),
+      netAmount: calculator.netAmount(),
+      netPercentYear: calculator.netPercentYear()
     }
   }
 }

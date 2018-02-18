@@ -1,12 +1,12 @@
 const DECIMAL_PLACES = 6
 
 const truncNumber = (number, decimalPlaces) => {
-  const regex = new RegExp(`[0-9]*\\.[0-9]{${decimalPlaces}}`)
+  const regex = new RegExp(`[0-9]*\\.[0-9]{1,${decimalPlaces}}`)
   return number.toString().match(regex) && Number(number.toString().match(regex)[0])
 }
 
-export const annualRateToDaily = annualRate => {
-  return truncNumber(Math.pow(1 + annualRate, 1 / 360) - 1, DECIMAL_PLACES)
+export const annualRateToDaily = (annualRate, decimalPlaces = null) => {
+  return truncNumber(Math.pow(1 + annualRate, 1 / 360) - 1, decimalPlaces || DECIMAL_PLACES)
 }
 
 export const dailyRateToAnnual = dailyRate => {

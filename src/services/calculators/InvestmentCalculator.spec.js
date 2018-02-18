@@ -1,4 +1,4 @@
-import InvestmentCalculator from 'Services/InvestmentCalculator'
+import InvestmentCalculator from './InvestmentCalculator'
 
 const investmentCalculator = (amount, daysOfInvestment, annualRate, taxes) => {
   return new InvestmentCalculator(amount, daysOfInvestment, annualRate, taxes)
