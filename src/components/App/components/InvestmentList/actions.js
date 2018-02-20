@@ -9,6 +9,7 @@ const investmentCalculator = calculator =>
       : new InvestmentCalculator(value, days, rate, taxes))
 
 export const ADD_INVESTMENT = 'ADD_INVESTMENT'
+export const REMOVE_INVESTMENT = 'REMOVE_INVESTMENT'
 export const CALCULATED_INVESTMENT = 'CALCULATED_INVESTMENT'
 
 let nextInvestmentId = 0
@@ -18,6 +19,13 @@ export const addInvestment = () => {
     type: ADD_INVESTMENT,
     id: nextInvestmentId++,
     status: 'in_simulation'
+  }
+}
+
+export const removeInvestment = investment => {
+  return {
+    type: REMOVE_INVESTMENT,
+    id: investment.id
   }
 }
 
