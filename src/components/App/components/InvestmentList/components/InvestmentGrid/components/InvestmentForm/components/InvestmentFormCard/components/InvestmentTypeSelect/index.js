@@ -39,7 +39,7 @@ class InvestmentTypeSelect extends React.Component {
   }
 }
 
-InvestmentTypeSelect.propTypes = {
+export const propTypes = {
   investmentTypes: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -47,5 +47,6 @@ InvestmentTypeSelect.propTypes = {
     })
   ).isRequired
 }
+InvestmentTypeSelect.propTypes = propTypes
 
 export default InvestmentTypeSelect

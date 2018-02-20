@@ -1,8 +1,9 @@
 import style from './index.scss'
 import React from 'react'
-import InvestmentTypeSelect from './components/InvestmentTypeSelect/index'
-import InvestmentInput from './components/InvestmentInput/index'
+import InvestmentTypeSelect, { propTypes as InvestmentTypesPropTypes } from './components/InvestmentTypeSelect'
+import InvestmentInput from './components/InvestmentInput'
 import FormDataParse from 'Services/FormDataParse'
+import PropTypes from 'prop-types'
 
 class InvestmentFormCard extends React.Component {
   handleSubmit (event) {
@@ -16,9 +17,17 @@ class InvestmentFormCard extends React.Component {
     this.props.onCalculate(investment)
   }
 
+  onClose () {
+    this.props.onClose(this.props.investment)
+  }
+
   render () {
     return (
       <div className={`card rounded ${style.card_property}`}>
+        <button className={`close text-right ${style.closeButton}`} aria-label='Fechar'
+          onClick={this.onClose.bind(this)}>
+          <i className='fa fa-close' />
+        </button>
         <div className='card-body h-100'>
           <form className='h-100' onSubmit={this.handleSubmit.bind(this)}>
             <div className='d-flex flex-column justify-content-between h-100'>
@@ -36,5 +45,12 @@ class InvestmentFormCard extends React.Component {
     )
   }
 }
+
+InvestmentFormCard.propTypes = Object.assign({}, InvestmentTypesPropTypes, {
+  investment: PropTypes.shape({
+    id: PropTypes.number.isRequired
+  }),
+  onClose: PropTypes.func.isRequired
+})
 
 export default InvestmentFormCard
