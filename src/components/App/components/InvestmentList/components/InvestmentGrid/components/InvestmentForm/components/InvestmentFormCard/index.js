@@ -1,6 +1,6 @@
 import style from './index.scss'
 import React from 'react'
-import InvestmentTypeSelect from './components/InvestmentTypeSelect'
+import InvestmentTypeSelect, { propTypes as InvestmentTypesPropTypes } from './components/InvestmentTypeSelect'
 import InvestmentInput from './components/InvestmentInput'
 import FormDataParse from 'Services/FormDataParse'
 import PropTypes from 'prop-types'
@@ -46,17 +46,11 @@ class InvestmentFormCard extends React.Component {
   }
 }
 
-InvestmentFormCard.propTypes = {
-  investmentTypes: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      index: PropTypes.string
-    })
-  ).isRequired,
+InvestmentFormCard.propTypes = Object.assign({}, InvestmentTypesPropTypes, {
   investment: PropTypes.shape({
     id: PropTypes.number.isRequired
   }),
   onClose: PropTypes.func.isRequired
-}
+})
 
 export default InvestmentFormCard
