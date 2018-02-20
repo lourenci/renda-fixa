@@ -1,12 +1,14 @@
 import InvestmentCalculator from 'Services/calculators/InvestmentCalculator'
 import TesouroDiretoCalculator from 'Services/calculators/TesouroDiretoCalculator'
 import { INVESTMENT_TYPES } from 'Services/investmentTypes'
+import indexes from 'Services/indexes'
 
 const investmentType = name => INVESTMENT_TYPES.filter(investment => investment.name === name)[0]
 const investmentCalculator = calculator =>
   (value, days, rate, taxes) =>
     (calculator === 'TesouroDiretoCalculator' ? new TesouroDiretoCalculator(value, days, rate, taxes)
       : new InvestmentCalculator(value, days, rate, taxes))
+const index = index => index ? indexes.cdi : indexes.selic
 
 export const ADD_INVESTMENT = 'ADD_INVESTMENT'
 export const REMOVE_INVESTMENT = 'REMOVE_INVESTMENT'
@@ -32,16 +34,17 @@ export const removeInvestment = investment => {
 export const calculateInvestment = investment => {
   const value = Number(investment.value)
   const days = Number(investment.days)
-  const rate = Number((0.07 * (investment.profitability / 100 || 1)).toFixed(5))
+  const indexValue = index(investmentType(investment.name).index)
+  const rate = Number((indexValue * (investment.profitability / 100 || 1)).toFixed(5))
 
-  const calculator = investmentCalculator(investmentType(investment.type).calculator)(value, days,
-    rate, investmentType(investment.type).taxes.map(tax => tax.name))
+  const calculator = investmentCalculator(investmentType(investment.name).calculator)(value, days,
+    rate, investmentType(investment.name).taxes.map(tax => tax.name))
 
   return {
     type: CALCULATED_INVESTMENT,
     id: investment.id,
     status: 'calculated',
-    name: investment.type,
+    name: investment.name,
     investedMoney: value,
     days: days,
     result: {

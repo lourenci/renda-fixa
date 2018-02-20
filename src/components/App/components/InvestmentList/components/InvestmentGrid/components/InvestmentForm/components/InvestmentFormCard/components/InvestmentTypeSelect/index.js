@@ -29,7 +29,7 @@ class InvestmentTypeSelect extends React.Component {
 
     return (
       <div>
-        <select name='type' className='form-control' value={this.state.selectedInvestment.name}
+        <select name='name' className='form-control' value={this.state.selectedInvestment.name}
           onChange={this.handleOnChange.bind(this)}>
           {this.props.investmentTypes.map((type, index) => (
             <option key={index} value={type.name}>{type.name}</option>))}
