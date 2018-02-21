@@ -2,6 +2,7 @@ import style from './index.scss'
 import React from 'react'
 import InvestmentTypeSelect, { propTypes as InvestmentTypesPropTypes } from './components/InvestmentTypeSelect'
 import InvestmentInput from './components/InvestmentInput'
+import CloseButton from '../../../../components/CloseButton'
 import FormDataParse from 'Services/FormDataParse'
 import PropTypes from 'prop-types'
 
@@ -24,10 +25,7 @@ class InvestmentFormCard extends React.Component {
   render () {
     return (
       <div className={`card rounded ${style.card_property}`}>
-        <button className={`close text-right ${style.closeButton}`} aria-label='Fechar'
-          onClick={this.onClose.bind(this)}>
-          <i className='fa fa-close' />
-        </button>
+        <CloseButton className={style.closeButton} onClick={this.onClose.bind(this)} />
         <div className='card-body h-100'>
           <form className='h-100' onSubmit={this.handleSubmit.bind(this)}>
             <div className='d-flex flex-column justify-content-between h-100'>
