@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import InvestmentFormCard from './components/InvestmentFormCard'
-import { calculateInvestment, removeInvestment } from '../../../../actions'
+import { calculateInvestment } from '../../../../actions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -9,13 +9,11 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   onCalculate: investment => {
     dispatch(calculateInvestment(investment))
   },
-  onClose: investment => {
-    dispatch(removeInvestment(investment))
-  }
+  onClose: ownProps.onClose
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(InvestmentFormCard)

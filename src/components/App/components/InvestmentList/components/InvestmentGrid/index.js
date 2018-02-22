@@ -14,8 +14,9 @@ class InvestmentGrid extends React.Component {
       return this.props.investments.map(investment => {
         return (
           <div className='m-3' key={investment.id}>
-            {investment.status === 'in_simulation' ? <InvestmentForm investment={investment} />
-              : <InvestmentResult {...investment} />}
+            {investment.status === 'in_simulation'
+              ? <InvestmentForm investment={investment} onClose={this.props.onClose} />
+              : <InvestmentResult {...investment} onClose={this.props.onClose} />}
           </div>
         )
       })
