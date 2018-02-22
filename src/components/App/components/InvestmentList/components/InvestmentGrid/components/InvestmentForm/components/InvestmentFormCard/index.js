@@ -1,7 +1,7 @@
 import React from 'react'
 import InvestmentTypeSelect, { propTypes as InvestmentTypesPropTypes } from './components/InvestmentTypeSelect'
 import InvestmentInput from './components/InvestmentInput'
-import FormDataParse from 'Services/FormDataParse'
+import formElementParse from 'Services/formElementParse'
 import PropTypes from 'prop-types'
 import Card from '../../../Card'
 
@@ -11,7 +11,7 @@ class InvestmentFormCard extends React.Component {
 
     const investment = Object.assign({},
       { id: this.props.investment.id },
-      FormDataParse(new FormData(event.target)).toJSON()
+      formElementParse(event.target).toJSON()
     )
 
     this.props.onCalculate(investment)
