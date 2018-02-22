@@ -1,8 +1,7 @@
-import style from './index.scss'
 import InformationTable from './components/InformationTable/index'
 import React from 'react'
 import PropTypes from 'prop-types'
-import CloseButton from '../CloseButton'
+import Card from '../Card'
 
 const brazilianMoney = number => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number)
 
@@ -13,8 +12,7 @@ class InvestmentResult extends React.Component {
 
   render () {
     return (
-      <div className={`card rounded ${style.card_property}`}>
-        <CloseButton className={style.closeButton} onClick={this.onClose.bind(this)} />
+      <Card onCloseCard={this.onClose.bind(this)}>
         <div className='card-header font-weight-bold p-2'>{this.props.name}</div>
         <ul className='list-group list-group-flush'>
           <li className='list-group-item p-2'>
@@ -36,7 +34,7 @@ class InvestmentResult extends React.Component {
             ]} />
           </li>
         </ul>
-      </div>
+      </Card>
     )
   }
 }
