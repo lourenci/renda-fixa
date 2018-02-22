@@ -1,6 +1,6 @@
-import FormDataParse from './FormDataParse'
+import formElementParse from './formElementParse'
 
-describe('FormDataParse', () => {
+describe('formElementParse', () => {
   const formElement = () => {
     const formElement = document.createElement('form')
     const input1 = document.createElement('input')
@@ -16,7 +16,7 @@ describe('FormDataParse', () => {
 
   describe('#toJSON', () => {
     it('returns a form parsed to JSON', () => {
-      expect(FormDataParse(new FormData(formElement())).toJSON()).toEqual({
+      expect(formElementParse(formElement()).toJSON()).toEqual({
         'input1': 'value1',
         'input2': ''
       })
