@@ -25,12 +25,12 @@ class InvestmentCalculator {
   }
 
   netAmount () {
-    return this.grossAmount() - this.amountTaxes()
+    return Number((this.grossAmount() - this.amountTaxes()).toFixed(2))
   }
 
   netPercentYear () {
     const dailyRate = rate(this.amount, this.netAmount(), this.days)
-    return dailyRateToAnnual(dailyRate)
+    return Number(dailyRateToAnnual(dailyRate).toFixed(4))
   }
 }
 
