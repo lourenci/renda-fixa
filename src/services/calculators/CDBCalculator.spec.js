@@ -12,7 +12,7 @@ describe('CDBCalculator', () => {
 
   describe('#amountTaxes', () => {
     describe('when the investment is for less than 30 days', () => {
-      it('returns the amount of taxes of investment including IOF tax', () => {
+      it('returns the amount of investment\'s taxes including IOF tax', () => {
         expect(subject.amountTaxes()).toEqual(4.05)
       })
     })
@@ -20,7 +20,7 @@ describe('CDBCalculator', () => {
     describe('when the investment is for more than 29 days', () => {
       beforeEach(() => { subject = new CDBCalculator(3000, 250, 0.07) })
 
-      it('returns the amount of taxes of investment without IOF', () => {
+      it('returns the amount of investment\'s taxes without IOF tax', () => {
         expect(subject.amountTaxes()).toEqual(28.71)
       })
     })
