@@ -1,13 +1,17 @@
 import InvestmentCalculator from 'Services/calculators/InvestmentCalculator'
 import { annualRateToDaily } from 'Services/financialMath'
 
+const taxes = ['IOFTax', 'IncomeTax']
+
+const bovespaTax = (amount, days) => Number((amount * annualRateToDaily(0.003, 10) * days).toFixed(2))
+
 class TesouroDiretoCalculator extends InvestmentCalculator {
-  netAmount () {
-    return this.grossAmount() - this.bovespaTax() - this.amountTaxes()
+  constructor (amount, days, annualRate) {
+    super(amount, days, annualRate, taxes)
   }
 
-  bovespaTax () {
-    return Number((this.amount * annualRateToDaily(0.003, 10) * this.days).toFixed(2))
+  amountTaxes () {
+    return bovespaTax(this.amount, this.days) + super.amountTaxes()
   }
 }
 
