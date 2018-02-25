@@ -24,7 +24,7 @@ class InvestmentResult extends React.PureComponent {
           <li className='list-group-item p-2'>
             <InformationTable lines={[
               { title: 'Total bruto', value: brazilianMoney(this.props.result.grossAmount) },
-              { title: 'Impostos', value: `- ${brazilianMoney(this.props.result.amountTaxes)}` }
+              { title: 'Taxas', value: `- ${brazilianMoney(this.props.result.amountTaxes)}` }
             ]} />
           </li>
           <li className='list-group-item p-2'>
