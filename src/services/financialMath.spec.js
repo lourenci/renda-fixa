@@ -2,33 +2,33 @@ import { annualRateToDaily, dailyRateToAnnual, futureValue, rate } from './finan
 
 describe('financialMath', () => {
   describe('#annualRateToDaily', () => {
-    describe('when decimal places is specified', () => {
-      it('returns the annual rate converted to daily rate with the decimal places specified', () => {
+    describe('when precision is specified', () => {
+      it('returns the annual rate converted to daily rate with the precision specified', () => {
         expect(annualRateToDaily(0.07, 10)).toEqual(0.0001879583)
       })
     })
 
-    describe('when decimal places isn\'t specified', () => {
-      it('returns the annual rate converted to daily rate', () => {
+    describe('when precision isn\'t specified', () => {
+      it('returns the annual rate converted to six-precision daily rate', () => {
         expect(annualRateToDaily(0.07)).toEqual(0.000187)
       })
     })
   })
 
   describe('#dailyRateToAnnual', () => {
-    it('returns the daily rate converted to annual rate', () => {
+    it('returns the daily rate converted to six-precision annual rate', () => {
       expect(dailyRateToAnnual(0.000187)).toEqual(0.06963)
     })
   })
 
   describe('#futureValue', () => {
-    it('returns the future value to amount', () => {
+    it('returns the two-rounded future value for amount', () => {
       expect(futureValue(5000, 365, annualRateToDaily(0.07))).toEqual(5353.16)
     })
   })
 
   describe('#rate', () => {
-    it('returns the rate of investment', () => {
+    it('returns the six-precision rate of investment', () => {
       expect(rate(1000, 1157.63, 3)).toEqual(0.050001)
     })
   })

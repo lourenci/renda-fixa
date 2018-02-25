@@ -17,7 +17,7 @@ class InvestmentTypeSelect extends React.PureComponent {
       if (this.state.selectedInvestment.index && !this.state.selectedInvestment.fixed) {
         return (
           <div className='input-group input-group-sm mt-2'>
-            <input type='number' name='profitability' className='form-control' placeholder='Rentabilidade' min='0'
+            <input type='number' name='profitability' className='form-control' placeholder='Rentabilidade' min='1'
               required />
             <div className='input-group-append'>
               <span className='input-group-text'>% da {this.state.selectedInvestment.index}</span>

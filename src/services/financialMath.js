@@ -1,20 +1,17 @@
-const DECIMAL_PLACES = 6
+import truncNumber from './helpers/truncNumber'
 
-const truncNumber = (number, decimalPlaces) => {
-  const regex = new RegExp(`[0-9]*\\.[0-9]{1,${decimalPlaces}}`)
-  return number.toString().match(regex) && Number(number.toString().match(regex)[0])
-}
+const PRECISION = 6
 
-export const annualRateToDaily = (annualRate, decimalPlaces = null) => {
-  return truncNumber(Math.pow(1 + annualRate, 1 / 360) - 1, decimalPlaces || DECIMAL_PLACES)
+export const annualRateToDaily = (annualRate, precision = null) => {
+  return truncNumber(Math.pow(1 + annualRate, 1 / 360) - 1, precision || PRECISION)
 }
 
 export const dailyRateToAnnual = dailyRate => {
-  return truncNumber(Math.pow(1 + dailyRate, 360) - 1, DECIMAL_PLACES)
+  return truncNumber(Math.pow(1 + dailyRate, 360) - 1, PRECISION)
 }
 
 export const rate = (presentValue, futureValue, period) => {
-  return truncNumber(Math.pow(futureValue / presentValue, 1 / period) - 1, DECIMAL_PLACES)
+  return truncNumber(Math.pow(futureValue / presentValue, 1 / period) - 1, PRECISION)
 }
 
 export const futureValue = (amount, period, rate) => {
