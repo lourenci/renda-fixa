@@ -5,7 +5,7 @@ import formElementParse from 'Services/formElementParse'
 import PropTypes from 'prop-types'
 import Card from '../../../Card'
 
-class InvestmentFormCard extends React.Component {
+class InvestmentFormCard extends React.PureComponent {
   handleSubmit (event) {
     event.preventDefault()
 

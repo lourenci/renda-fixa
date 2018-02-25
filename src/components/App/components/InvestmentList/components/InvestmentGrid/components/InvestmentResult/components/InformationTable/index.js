@@ -2,7 +2,7 @@ import style from './index.scss'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class InformationTable extends React.Component {
+class InformationTable extends React.PureComponent {
   render () {
     const lines = () => (
       this.props.lines.map((line, index) => (

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class CloseButton extends React.Component {
+class CloseButton extends React.PureComponent {
   render () {
     return (
       <button className={`close ${this.props.className}`} aria-label='Fechar'

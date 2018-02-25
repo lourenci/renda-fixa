@@ -1,8 +1,8 @@
 import './index.scss'
 import React from 'react'
-import InvestmentList from './components/InvestmentList/index'
+import InvestmentList from './components/InvestmentList'
 
-class App extends React.Component {
+class App extends React.PureComponent {
   render () {
     return (
       <div className='container h-100'>

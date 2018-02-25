@@ -1,11 +1,11 @@
-import InformationTable from './components/InformationTable/index'
+import InformationTable from './components/InformationTable'
 import React from 'react'
 import PropTypes from 'prop-types'
 import Card from '../Card'
 
 const brazilianMoney = number => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number)
 
-class InvestmentResult extends React.Component {
+class InvestmentResult extends React.PureComponent {
   onClose () {
     this.props.onClose(this.props)
   }
