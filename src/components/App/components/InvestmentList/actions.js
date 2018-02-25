@@ -4,7 +4,7 @@ import indexes from 'Services/indexes'
 
 const investmentType = name => INVESTMENT_TYPES.filter(investment => investment.name === name)[0]
 const investmentCalculator = calculator => (value, days, rate) => new calculators[calculator](value, days, rate)
-const index = index => index ? indexes.cdi : indexes.selic
+const index = indexName => indexes.filter(index => index.name === indexName)[0]
 
 export const ADD_INVESTMENT = 'ADD_INVESTMENT'
 export const REMOVE_INVESTMENT = 'REMOVE_INVESTMENT'
@@ -30,7 +30,7 @@ export const removeInvestment = investment => {
 export const calculateInvestment = investment => {
   const value = Number(investment.value)
   const days = Number(investment.days)
-  const indexValue = index(investmentType(investment.name).index)
+  const indexValue = index(investmentType(investment.name).index).value
   const rate = Number((indexValue * (investment.profitability / 100 || 1)).toFixed(5))
 
   const calculator = investmentCalculator(investmentType(investment.name).calculator)(value, days, rate)

@@ -2,10 +2,10 @@ import InvestmentCalculator from './InvestmentCalculator'
 
 const taxes = ['IOFTax', 'IncomeTax']
 
-class CDBCalculator extends InvestmentCalculator {
+class NuCDBCalculator extends InvestmentCalculator {
   constructor (amount, days, annualRate) {
     super(amount, days, annualRate, taxes)
   }
 }
 
-export default CDBCalculator
+export default NuCDBCalculator
