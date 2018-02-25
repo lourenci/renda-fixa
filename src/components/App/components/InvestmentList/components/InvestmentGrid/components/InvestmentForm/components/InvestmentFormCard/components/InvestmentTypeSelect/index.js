@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class InvestmentTypeSelect extends React.Component {
+class InvestmentTypeSelect extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = { selectedInvestment: this.props.investmentTypes[0] }

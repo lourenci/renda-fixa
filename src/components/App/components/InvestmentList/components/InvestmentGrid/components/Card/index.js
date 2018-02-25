@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import style from './index.scss'
 import CloseButton from './components/CloseButton'
 
-class Card extends React.Component {
+class Card extends React.PureComponent {
   render () {
     return (
       <div className={`card rounded ${style.card_property}`}>

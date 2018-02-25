@@ -1,10 +1,10 @@
 import style from './index.scss'
 import React from 'react'
-import InvestmentForm from './components/InvestmentForm/index'
-import InvestmentResult from './components/InvestmentResult/index'
+import InvestmentForm from './components/InvestmentForm'
+import InvestmentResult from './components/InvestmentResult'
 import PropTypes from 'prop-types'
 
-class InvestmentGrid extends React.Component {
+class InvestmentGrid extends React.PureComponent {
   onNewInvestment () {
     this.props.onNewInvestment()
   }

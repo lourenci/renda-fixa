@@ -1,6 +1,6 @@
 import React from 'react'
 
-class InvestmentInput extends React.Component {
+class InvestmentInput extends React.PureComponent {
   render () {
     return (
       <div>
