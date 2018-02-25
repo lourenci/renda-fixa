@@ -14,7 +14,7 @@ class InvestmentTypeSelect extends React.Component {
 
   render () {
     const inputForIndex = () => {
-      if (this.state.selectedInvestment.index) {
+      if (this.state.selectedInvestment.index && !this.state.selectedInvestment.fixed) {
         return (
           <div className='input-group input-group-sm mt-2'>
             <input type='number' name='profitability' className='form-control' placeholder='Rentabilidade' min='0'

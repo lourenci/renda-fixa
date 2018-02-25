@@ -1,8 +1,8 @@
-import CDBCalculator from './CDBCalculator'
+import NuCDBCalculator from './NuCDBCalculator'
 
-describe('CDBCalculator', () => {
+describe('NuCDBCalculator', () => {
   let subject
-  beforeEach(() => { subject = new CDBCalculator(3000, 29, 0.07) })
+  beforeEach(() => { subject = new NuCDBCalculator(3000, 29, 0.07) })
 
   describe('#grossAmount', () => {
     it('returns the gross amount on the end of period', () => {
@@ -18,7 +18,7 @@ describe('CDBCalculator', () => {
     })
 
     describe('when the investment is for more than 29 days', () => {
-      beforeEach(() => { subject = new CDBCalculator(3000, 250, 0.07) })
+      beforeEach(() => { subject = new NuCDBCalculator(3000, 250, 0.07) })
 
       it('returns the amount of investment\'s taxes without IOF tax', () => {
         expect(subject.amountTaxes()).toEqual(28.71)
