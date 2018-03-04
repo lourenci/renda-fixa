@@ -2,7 +2,7 @@ import NuCDBCalculator from './NuCDBCalculator'
 
 describe('NuCDBCalculator', () => {
   let subject
-  beforeEach(() => { subject = new NuCDBCalculator(3000, 29, 0.07) })
+  beforeEach(() => { subject = new NuCDBCalculator(3000, 29, 0.000187) })
 
   describe('#grossAmount', () => {
     it('returns the gross amount on the end of period', () => {

@@ -25,5 +25,9 @@ export const INVESTMENT_TYPES = [
     name: 'CDB',
     index: 'CDI',
     calculator: 'NuCDBCalculator'
+  },
+  {
+    name: 'Poupança',
+    calculator: 'PoupancaCalculator'
   }
 ]

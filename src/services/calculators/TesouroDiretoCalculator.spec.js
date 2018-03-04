@@ -2,7 +2,7 @@ import TesouroDiretoCalculator from './TesouroDiretoCalculator'
 
 describe('TesouroDiretoCalculator', () => {
   let subject
-  beforeEach(() => { subject = new TesouroDiretoCalculator(3000, 29, 0.07) })
+  beforeEach(() => { subject = new TesouroDiretoCalculator(3000, 29, 0.000187) })
 
   describe('#grossAmount', () => {
     it('returns the gross amount on the end of period', () => {

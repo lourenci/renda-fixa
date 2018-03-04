@@ -2,7 +2,7 @@ import LCIACalculator from './LCIACalculator'
 
 describe('LCIACalculator', () => {
   let subject
-  beforeEach(() => { subject = new LCIACalculator(3000, 29, 0.07) })
+  beforeEach(() => { subject = new LCIACalculator(3000, 29, 0.000187) })
 
   describe('#grossAmount', () => {
     it('returns the gross amount on the end of period', () => {

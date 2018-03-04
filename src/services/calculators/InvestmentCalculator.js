@@ -1,36 +1,42 @@
-import { annualRateToDaily, dailyRateToAnnual, futureValue, rate } from 'Services/financialMath'
-import IncomeTax from '../taxes/IncomeTax'
-import IOFTax from '../taxes/IOFTax'
+import LCIACalculator from './LCIACalculator'
+import TesouroDiretoCalculator from './TesouroDiretoCalculator'
+import NuCDBCalculator from 'Services/calculators/NuCDBCalculator'
+import PoupancaCalculator from 'Services/calculators/PoupancaCalculator'
+import { annualRateToDaily } from 'Services/financialMath'
+import { cdi, selic } from 'Services/indexes'
 
-const taxClasses = { IncomeTax, IOFTax }
+const poupancaDailyRate = () => {
+  const selicIndex = selic()
+  return (selicIndex > 0.085 ? 0.000166 : annualRateToDaily(selicIndex * 0.7))
+}
 
 class InvestmentCalculator {
-  constructor (amount, days, annualRate, taxesToDeduct) {
+  constructor (investmentName, amount, days, profitibility = null) {
+    this.investmentName = investmentName
     this.amount = amount
     this.days = days
-    this.annualRate = annualRate
-    this.taxesToDeduct = taxesToDeduct
+    this.profitibility = profitibility
   }
 
-  grossAmount () {
-    return futureValue(this.amount, this.days, annualRateToDaily(this.annualRate))
-  }
-
-  amountTaxes () {
-    const grossProfit = this.grossAmount() - this.amount
-    const netAmount = this.taxesToDeduct.reduce((sum, tax) => {
-      return sum - new taxClasses[tax](this.days).percentOfValue(sum)
-    }, grossProfit)
-    return Number((grossProfit - netAmount).toFixed(2))
-  }
-
-  netAmount () {
-    return Number((this.grossAmount() - this.amountTaxes()).toFixed(2))
-  }
-
-  netPercentYear () {
-    const dailyRate = rate(this.amount, this.netAmount(), this.days)
-    return Number(dailyRateToAnnual(dailyRate).toFixed(4))
+  calculator () {
+    if (this.investmentName === 'Tesouro Direto Selic') {
+      return new TesouroDiretoCalculator(this.amount, this.days, annualRateToDaily(selic()))
+    }
+    if (this.investmentName === 'LCI') {
+      return new LCIACalculator(this.amount, this.days, annualRateToDaily(cdi() * this.profitibility))
+    }
+    if (this.investmentName === 'LCA') {
+      return new LCIACalculator(this.amount, this.days, annualRateToDaily(cdi() * this.profitibility))
+    }
+    if (this.investmentName === 'NuConta') {
+      return new NuCDBCalculator(this.amount, this.days, annualRateToDaily(cdi()))
+    }
+    if (this.investmentName === 'CDB') {
+      return new NuCDBCalculator(this.amount, this.days, annualRateToDaily(cdi() * this.profitibility))
+    }
+    if (this.investmentName === 'Poupança') {
+      return new PoupancaCalculator(this.amount, this.days, poupancaDailyRate())
+    }
   }
 }
 
