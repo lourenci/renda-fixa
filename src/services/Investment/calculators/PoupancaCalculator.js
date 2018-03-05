@@ -1,4 +1,4 @@
-import BaseCalculator from 'Services/calculators/BaseCalculator'
+import BaseCalculator from './BaseCalculator'
 
 class PoupancaCalculator extends BaseCalculator {
   constructor (amount, days, dailyRate) {

@@ -1,5 +1,5 @@
 import BaseCalculator from './BaseCalculator'
-import { annualRateToDaily } from '../financialMath'
+import { annualRateToDaily } from 'Services/financialMath'
 
 const taxes = ['IOFTax', 'IncomeTax']
 

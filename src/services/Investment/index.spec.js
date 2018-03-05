@@ -1,8 +1,8 @@
-import InvestmentCalculator from './InvestmentCalculator'
-import TesouroDiretoCalculator from 'Services/calculators/TesouroDiretoCalculator'
-import LCIACalculator from 'Services/calculators/LCIACalculator'
-import NuCDBCalculator from 'Services/calculators/NuCDBCalculator'
-import PoupancaCalculator from 'Services/calculators/PoupancaCalculator'
+import Investment from './index'
+import TesouroDiretoCalculator from './calculators/TesouroDiretoCalculator'
+import LCIACalculator from './calculators/LCIACalculator'
+import NuCDBCalculator from './calculators/NuCDBCalculator'
+import PoupancaCalculator from './calculators/PoupancaCalculator'
 import { selic, cdi } from '../indexes'
 jest.mock('../indexes', () => ({
   selic: jest.fn(),
@@ -14,9 +14,9 @@ beforeEach(() => {
   cdi.mockReturnValue(0.069)
 })
 
-describe('InvestmentCalculator', () => {
+describe('Investment', () => {
   const subject = (investmentName, amount, days, profitibility) => {
-    return new InvestmentCalculator(investmentName, amount, days, profitibility).calculator()
+    return new Investment(investmentName, amount, days, profitibility).calculator()
   }
 
   describe('#calculator', () => {

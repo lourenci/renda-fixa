@@ -1,4 +1,4 @@
-import InvestmentCalculator from 'Services/calculators/InvestmentCalculator'
+import Investment from 'Services/Investment'
 
 export const ADD_INVESTMENT = 'ADD_INVESTMENT'
 export const REMOVE_INVESTMENT = 'REMOVE_INVESTMENT'
@@ -25,7 +25,7 @@ export const calculateInvestment = investment => {
   const amount = Number(investment.value)
   const days = Number(investment.days)
 
-  const calculator = new InvestmentCalculator(investment.name, amount, days, investment.profitibility).calculator()
+  const calculator = new Investment(investment.name, amount, days, investment.profitibility).calculator()
 
   return {
     type: CALCULATED_INVESTMENT,

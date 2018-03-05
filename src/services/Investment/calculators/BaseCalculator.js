@@ -1,4 +1,4 @@
-import { dailyRateToAnnual, futureValue, rate } from '../financialMath'
+import { dailyRateToAnnual, futureValue, rate } from 'Services/financialMath'
 import { taxClasses } from './taxes'
 
 class BaseCalculator {

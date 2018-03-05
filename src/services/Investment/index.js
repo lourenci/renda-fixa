@@ -1,7 +1,7 @@
-import LCIACalculator from './LCIACalculator'
-import TesouroDiretoCalculator from './TesouroDiretoCalculator'
-import NuCDBCalculator from 'Services/calculators/NuCDBCalculator'
-import PoupancaCalculator from 'Services/calculators/PoupancaCalculator'
+import LCIACalculator from './calculators/LCIACalculator'
+import TesouroDiretoCalculator from './calculators/TesouroDiretoCalculator'
+import NuCDBCalculator from './calculators/NuCDBCalculator'
+import PoupancaCalculator from './calculators/PoupancaCalculator'
 import { annualRateToDaily } from 'Services/financialMath'
 import { cdi, selic } from 'Services/indexes'
 
@@ -10,7 +10,7 @@ const poupancaDailyRate = () => {
   return (selicIndex > 0.085 ? 0.000166 : annualRateToDaily(selicIndex * 0.7))
 }
 
-class InvestmentCalculator {
+class Investment {
   constructor (investmentName, amount, days, profitibility = null) {
     this.investmentName = investmentName
     this.amount = amount
@@ -36,4 +36,4 @@ class InvestmentCalculator {
   }
 }
 
-export default InvestmentCalculator
+export default Investment
