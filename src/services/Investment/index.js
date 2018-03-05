@@ -11,15 +11,15 @@ const poupancaDailyRate = () => {
 }
 
 class Investment {
-  constructor (investmentName, amount, days, profitibility = null) {
-    this.investmentName = investmentName
+  constructor (name, amount, days, profitibility = null) {
+    this.name = name
     this.amount = amount
     this.days = days
     this.profitibility = profitibility
   }
 
   calculator () {
-    switch (this.investmentName) {
+    switch (this.name) {
       case 'Tesouro Direto Selic':
         return new TesouroDiretoCalculator(this.amount, this.days, annualRateToDaily(selic()))
       case 'LCI':

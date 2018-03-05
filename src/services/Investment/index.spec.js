@@ -15,8 +15,8 @@ beforeEach(() => {
 })
 
 describe('Investment', () => {
-  const subject = (investmentName, amount, days, profitibility) => {
-    return new Investment(investmentName, amount, days, profitibility).calculator()
+  const subject = (name, amount, days, profitibility) => {
+    return new Investment(name, amount, days, profitibility).calculator()
   }
 
   describe('#calculator', () => {
