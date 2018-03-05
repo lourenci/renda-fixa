@@ -68,7 +68,7 @@ describe('InvestmentCalculator', () => {
       describe('when selic index is equal or less than 8,5% by year', () => {
         beforeEach(() => { selic.mockReturnValue(0.085) })
 
-        it('returns a PoupancaCalculator instance with 70% of selic plus TR tax in daily rate', () => {
+        it('returns a PoupancaCalculator instance with 70% of selic plus TR index in daily rate', () => {
           expect(subject('Poupança', 1000, 25)).toBeInstanceOf(PoupancaCalculator)
           expect(subject('Poupança', 1000, 25).dailyRate).toBe(0.000160)
         })

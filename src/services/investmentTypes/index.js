@@ -12,6 +12,10 @@ export const INVESTMENT_TYPES = [
     calculator: 'NuCDBCalculator'
   },
   {
+    name: 'Poupança',
+    calculator: 'PoupancaCalculator'
+  },
+  {
     name: 'LCI',
     index: 'CDI',
     calculator: 'LCIACalculator'
@@ -25,9 +29,5 @@ export const INVESTMENT_TYPES = [
     name: 'CDB',
     index: 'CDI',
     calculator: 'NuCDBCalculator'
-  },
-  {
-    name: 'Poupança',
-    calculator: 'PoupancaCalculator'
   }
 ]
