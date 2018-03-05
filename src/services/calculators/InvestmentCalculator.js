@@ -19,23 +19,19 @@ class InvestmentCalculator {
   }
 
   calculator () {
-    if (this.investmentName === 'Tesouro Direto Selic') {
-      return new TesouroDiretoCalculator(this.amount, this.days, annualRateToDaily(selic()))
-    }
-    if (this.investmentName === 'LCI') {
-      return new LCIACalculator(this.amount, this.days, annualRateToDaily(cdi() * this.profitibility))
-    }
-    if (this.investmentName === 'LCA') {
-      return new LCIACalculator(this.amount, this.days, annualRateToDaily(cdi() * this.profitibility))
-    }
-    if (this.investmentName === 'NuConta') {
-      return new NuCDBCalculator(this.amount, this.days, annualRateToDaily(cdi()))
-    }
-    if (this.investmentName === 'CDB') {
-      return new NuCDBCalculator(this.amount, this.days, annualRateToDaily(cdi() * this.profitibility))
-    }
-    if (this.investmentName === 'Poupança') {
-      return new PoupancaCalculator(this.amount, this.days, poupancaDailyRate())
+    switch (this.investmentName) {
+      case 'Tesouro Direto Selic':
+        return new TesouroDiretoCalculator(this.amount, this.days, annualRateToDaily(selic()))
+      case 'LCI':
+        return new LCIACalculator(this.amount, this.days, annualRateToDaily(cdi() * this.profitibility))
+      case 'LCA':
+        return new LCIACalculator(this.amount, this.days, annualRateToDaily(cdi() * this.profitibility))
+      case 'NuConta':
+        return new NuCDBCalculator(this.amount, this.days, annualRateToDaily(cdi()))
+      case 'CDB':
+        return new NuCDBCalculator(this.amount, this.days, annualRateToDaily(cdi() * this.profitibility))
+      case 'Poupança':
+        return new PoupancaCalculator(this.amount, this.days, poupancaDailyRate())
     }
   }
 }
