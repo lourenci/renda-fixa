@@ -1,14 +1,14 @@
-import calculators from 'Services/calculators'
 import { INVESTMENT_TYPES } from 'Services/investmentTypes'
-import indexes from 'Services/indexes'
-
-const investmentType = name => INVESTMENT_TYPES.filter(investment => investment.name === name)[0]
-const investmentCalculator = calculator => (value, days, rate) => new calculators[calculator](value, days, rate)
-const index = indexName => indexes.filter(index => index.name === indexName)[0]
+import { investments } from 'Services/Investment'
 
 export const ADD_INVESTMENT = 'ADD_INVESTMENT'
 export const REMOVE_INVESTMENT = 'REMOVE_INVESTMENT'
 export const CALCULATED_INVESTMENT = 'CALCULATED_INVESTMENT'
+
+const investmentType = name => INVESTMENT_TYPES.find(investment => investment.name === name)
+const investmentCalculator = investment => (value, days, rate) => {
+  return new investments[investment](value, days, rate).calculator()
+}
 
 let nextInvestmentId = 0
 
@@ -28,19 +28,18 @@ export const removeInvestment = investment => {
 }
 
 export const calculateInvestment = investment => {
-  const value = Number(investment.value)
+  const amount = Number(investment.value)
   const days = Number(investment.days)
-  const indexValue = index(investmentType(investment.name).index).value
-  const rate = Number((indexValue * (investment.profitability / 100 || 1)).toFixed(5))
+  const profitabilityOfCDI = investment.profitability / 100
 
-  const calculator = investmentCalculator(investmentType(investment.name).calculator)(value, days, rate)
+  const calculator = investmentCalculator(investmentType(investment.name).investment)(amount, days, profitabilityOfCDI)
 
   return {
     type: CALCULATED_INVESTMENT,
     id: investment.id,
     status: 'calculated',
     name: investment.name,
-    investedMoney: value,
+    investedMoney: amount,
     days: days,
     result: {
       grossAmount: calculator.grossAmount(),

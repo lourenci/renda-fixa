@@ -1,19 +1,16 @@
-import { annualRateToDaily, dailyRateToAnnual, futureValue, rate } from 'Services/financialMath'
-import IncomeTax from '../taxes/IncomeTax'
-import IOFTax from '../taxes/IOFTax'
+import { dailyRateToAnnual, futureValue, rate } from 'Services/financialMath'
+import { taxClasses } from './taxes'
 
-const taxClasses = { IncomeTax, IOFTax }
-
-class InvestmentCalculator {
-  constructor (amount, days, annualRate, taxesToDeduct) {
+class BaseCalculator {
+  constructor (amount, days, dailyRate, taxesToDeduct) {
     this.amount = amount
     this.days = days
-    this.annualRate = annualRate
+    this.dailyRate = dailyRate
     this.taxesToDeduct = taxesToDeduct
   }
 
   grossAmount () {
-    return futureValue(this.amount, this.days, annualRateToDaily(this.annualRate))
+    return futureValue(this.amount, this.days, this.dailyRate)
   }
 
   amountTaxes () {
@@ -34,4 +31,4 @@ class InvestmentCalculator {
   }
 }
 
-export default InvestmentCalculator
+export default BaseCalculator

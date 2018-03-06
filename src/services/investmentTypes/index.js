@@ -1,29 +1,29 @@
 export const INVESTMENT_TYPES = [
   {
     name: 'Tesouro Direto Selic',
-    index: 'Selic',
-    fixed: 100,
-    calculator: 'TesouroDiretoCalculator'
+    investment: 'TesouroDiretoInvestment'
   },
   {
     name: 'NuConta',
-    index: 'CDI',
-    fixed: 100,
-    calculator: 'NuCDBCalculator'
+    investment: 'NuInvestment'
+  },
+  {
+    name: 'Poupança',
+    investment: 'PoupancaInvestment'
   },
   {
     name: 'LCI',
     index: 'CDI',
-    calculator: 'LCIACalculator'
+    investment: 'LCIAInvestment'
   },
   {
     name: 'LCA',
     index: 'CDI',
-    calculator: 'LCIACalculator'
+    investment: 'LCIAInvestment'
   },
   {
     name: 'CDB',
     index: 'CDI',
-    calculator: 'NuCDBCalculator'
+    investment: 'CDBInvestment'
   }
 ]
