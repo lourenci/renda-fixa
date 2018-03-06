@@ -1,4 +1,4 @@
-import { selic, cdi, tr } from './indexes'
+import { selic, cdi } from './indexes'
 
 jest.mock('./indexes.json', () => ([
   { 'name': 'Selic', 'value': 0.07 },
@@ -15,11 +15,5 @@ describe('#selic', () => {
 describe('#cdi', () => {
   it('returns the CDI index', () => {
     expect(cdi()).toBe(0.0665)
-  })
-})
-
-describe('#tr', () => {
-  it('returns the TR index', () => {
-    expect(tr()).toBe(0.0000)
   })
 })

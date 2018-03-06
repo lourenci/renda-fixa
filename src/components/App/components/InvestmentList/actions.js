@@ -30,9 +30,9 @@ export const removeInvestment = investment => {
 export const calculateInvestment = investment => {
   const amount = Number(investment.value)
   const days = Number(investment.days)
-  const profitability = (investment.profitability / 100 || 1)
+  const profitabilityOfCDI = investment.profitability / 100
 
-  const calculator = investmentCalculator(investmentType(investment.name).investment)(amount, days, profitability)
+  const calculator = investmentCalculator(investmentType(investment.name).investment)(amount, days, profitabilityOfCDI)
 
   return {
     type: CALCULATED_INVESTMENT,
