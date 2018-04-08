@@ -41,6 +41,7 @@ export const calculateInvestment = investment => {
     name: investment.name,
     investedMoney: amount,
     days: days,
+    profitability: investment.profitability,
     result: {
       grossAmount: calculator.grossAmount(),
       amountTaxes: calculator.amountTaxes(),

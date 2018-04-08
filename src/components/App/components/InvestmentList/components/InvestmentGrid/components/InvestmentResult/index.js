@@ -13,7 +13,10 @@ class InvestmentResult extends React.PureComponent {
   render () {
     return (
       <Card onCloseCard={this.onClose.bind(this)}>
-        <div className='card-header font-weight-bold p-2'>{this.props.name}</div>
+        <div className='card-header font-weight-bold p-2 d-flex justify-content-between'>
+          <div>{this.props.name}</div>
+          <div>{this.props.profitability && `${this.props.profitability}% da CDI`}</div>
+        </div>
         <ul className='list-group list-group-flush'>
           <li className='list-group-item p-2'>
             <InformationTable lines={[
@@ -42,6 +45,7 @@ class InvestmentResult extends React.PureComponent {
 InvestmentResult.propTypes = {
   name: PropTypes.string.isRequired,
   investedMoney: PropTypes.number.isRequired,
+  profitability: PropTypes.number.isRequired,
   days: PropTypes.number.isRequired,
   result: PropTypes.shape({
     grossAmount: PropTypes.number.isRequired,
