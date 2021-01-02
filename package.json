@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "jest && rm -rf dist/* && webpack -p",
+    "build": "jest && rm -rf dist/* && webpack --mode='production'",
     "dev": "webpack serve"
   },
   "dependencies": {
