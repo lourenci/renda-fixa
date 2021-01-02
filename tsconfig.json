@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "Services/*": ["src/services/*"]
+    },
+    "module": "es6",
+    "target": "es5",
+    "moduleResolution": "node",
+    "jsx": "react-jsxdev",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "strict": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false
+  },
+  "include": ["src/**/*"]
+}

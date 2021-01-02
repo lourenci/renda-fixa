@@ -30,7 +30,12 @@ const config = {
         })
       },
       { test: /\.(woff|woff2|eot|ttf)$/, loader: 'file-loader' },
-      { test: /\.svg$/, loader: 'file-loader' }
+      { test: /\.svg$/, loader: 'file-loader' },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: { loader: 'ts-loader', options: { configFile: 'tsconfig.webpack.json' } },
+      },
     ]
   },
   resolve: {
