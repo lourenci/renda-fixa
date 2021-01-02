@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist/* && webpack -p && cp CNAME dist/",
+    "build": "yarn jest && rm -rf dist/* && webpack -p",
     "dev": "webpack serve"
   },
   "dependencies": {
