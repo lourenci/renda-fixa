@@ -1,33 +1,28 @@
 const path = require('path')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-
-const extractSass = new ExtractTextPlugin({
-  filename: 'app.bundle.[contenthash].css'
-})
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const config = {
+  mode: 'development',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'app.bundle.[hash].js'
+    filename: 'app.bundle.[contenthash].js',
+    publicPath: '/'
   },
   plugins: [
     new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'index.html') }),
-    extractSass
+    new MiniCssExtractPlugin({
+      filename: 'app.bundle.[contenthash].css'
+    })
   ],
   module: {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
       {
         test: /\.scss$/,
-        use: extractSass.extract({
-          use: [
-            { loader: 'css-loader' },
-            { loader: 'sass-loader' }
-          ]
-        })
+        use: [MiniCssExtractPlugin.loader, { loader: 'css-loader', options: { modules: 'global', sourceMap: true } }, 'sass-loader']
       },
       { test: /\.(woff|woff2|eot|ttf)$/, loader: 'file-loader' },
       { test: /\.svg$/, loader: 'file-loader' },
